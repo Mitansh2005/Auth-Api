@@ -9,6 +9,10 @@ services:
       POSTGRES_DB: postgres
     ports:
       - "5432:5432"
+    networks:
+      - auth-api-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -19,3 +23,14 @@ services:
     environment:
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONUNBUFFERED: 1
+    depends_on:
+      - db
+    networks:
+      - auth-api-network
+
+networks:
+  auth-api-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
