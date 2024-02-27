@@ -26,14 +26,6 @@ def get_tokens_for_user(user):
 
 # Create your views here.
 
-
-class Root(APIView):
-    renderer_classes = []
-
-    def list(self, request, format=None):
-        return Response({"message": "hello"}, status=status.HTTP_200_OK)
-
-
 class UserRegisteration(APIView):
     renderer_classes = [CustomUserRenders]
 

@@ -1,6 +1,5 @@
 from django.urls import path
 from Auth.views import (
-    Root,
     UserRegisteration,
     UserLogin,
     UserProfileView,
